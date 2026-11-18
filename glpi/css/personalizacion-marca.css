@@ -1,0 +1,112 @@
+/* =========================================
+   Personalización de GLPI (marca blanca)
+   Colores de ejemplo: reemplazar por los de la marca
+   ========================================= */
+
+/* 1. Colores corporativos (variables base) */
+:root[data-glpi-theme] {
+  --tblr-primary: #1F5FA8;
+  --tblr-primary-rgb: 31, 95, 168;
+  --tblr-primary-fg: #FFFFFF;
+  --glpi-mainmenu-bg: #1F5FA8;
+  --glpi-mainmenu-fg: #FFFFFF;
+  --glpi-mainmenu-active-bg: #174C86;
+  --tblr-link-color: #1F5FA8;
+}
+
+/* 2. Menú principal: letra blanca siempre */
+aside.navbar-vertical .nav-link,
+aside.navbar-vertical .nav-link:focus,
+aside.navbar-vertical .nav-link.show,
+aside.navbar-vertical .nav-link.show *,
+aside.navbar-vertical .nav-item.active > .nav-link {
+  color: #FFFFFF !important;
+}
+
+/* 3. Submenú desplegado: letra blanca siempre */
+aside.navbar-vertical .dropdown-menu,
+aside.navbar-vertical .dropdown-item,
+aside.navbar-vertical .dropdown-item * {
+  background-color: transparent;
+  color: #FFFFFF !important;
+}
+
+/* 4. Cursor encima, en menú y submenú */
+aside.navbar-vertical .nav-link:hover,
+aside.navbar-vertical .nav-link:hover *,
+aside.navbar-vertical .dropdown-item:hover,
+aside.navbar-vertical .dropdown-item:hover *,
+aside.navbar-vertical .dropdown-item.active {
+  background-color: #174C86 !important;
+  color: #FFFFFF !important;
+}
+
+/* 5. Logo de la empresa sobre recuadro blanco (imagen incluida en base64) */
+.navbar-brand .glpi-logo {
+  display: block !important;
+  background-image: url("data:image/png;base64,PEGAR_AQUI_EL_LOGO_EN_BASE64") !important;
+  background-color: #FFFFFF !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-origin: content-box !important;
+  padding: 8px;
+  border-radius: 6px;
+}
+
+/* 6. Tamaño en menú lateral (administradores y técnicos) */
+aside.navbar-vertical .navbar-brand {
+  display: block !important;
+  width: 100% !important;
+  padding: 10px 12px !important;
+  margin: 0 !important;
+}
+aside.navbar-vertical .glpi-logo {
+  width: 100% !important;
+  height: 80px !important;
+}
+
+/* 7. Tamaño en barra superior (clientes) */
+header.navbar .glpi-logo {
+  width: 160px !important;
+  height: 66px !important;
+  padding: 6px;
+}
+/* ===== 8. Columna ID → "Ticket" (solo en la lista de casos) ===== */
+form[data-search-itemtype="Ticket"] th[data-searchopt-id="2"] {
+    font-size: 0;
+}
+form[data-search-itemtype="Ticket"] th[data-searchopt-id="2"]::before {
+    content: "Ticket";
+    font-size: 0.625rem;
+}
+/* ===== 9. Menú lateral: "Casos" → "Tickets", "Crear caso" → "Crear ticket" ===== */
+a.dropdown-item[href$="/front/ticket.php"] .text-wrap,
+a.dropdown-item[href$="/front/ticket.form.php"] .text-wrap {
+    font-size: 0;
+}
+a.dropdown-item[href$="/front/ticket.php"]::after {
+    content: "Tickets";
+}
+a.dropdown-item[href$="/front/ticket.form.php"]::after {
+    content: "Crear ticket";
+}
+/* ===== 10. Ruta superior: "Casos" → "Tickets" (solo el último elemento) ===== */
+.breadcrumb-item:last-child a[href$="/front/ticket.php"] {
+    font-size: 0;
+}
+.breadcrumb-item:last-child a[href$="/front/ticket.php"] > i,
+.breadcrumb-item:last-child a[href$="/front/ticket.php"]::after {
+    font-size: 14px;
+}
+.breadcrumb-item:last-child a[href$="/front/ticket.php"]::after {
+    content: "Tickets";
+}
+/* Ocultar el copyright de GLPI (requisito del negocio) */
+a.copyright {
+  display: none !important;
+}
+/* Ocultar "Origen del inicio de sesión" (requisito del negocio) */
+div.mb-3:has(select[name="auth"]) {
+  display: none !important;
+}

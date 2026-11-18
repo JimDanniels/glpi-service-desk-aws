@@ -1,0 +1,5 @@
+; /etc/php/8.5/apache2/php.ini
+; Con GLPI servido por HTTPS, la cookie de sesión solo viaja por HTTPS.
+; Efecto: iniciar sesión por la IP con http deja de funcionar (intencional).
+; Aplicar con: sudo apache2ctl configtest && sudo systemctl restart apache2
+session.cookie_secure = On

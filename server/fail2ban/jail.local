@@ -1,0 +1,7 @@
+# /etc/fail2ban/jail.local — ajustes propios (jail.conf no se toca: se reemplaza al actualizar)
+# 5 fallos de SSH en 10 minutos → bloqueo de 1 hora; cada reincidencia alarga el bloqueo.
+[DEFAULT]
+bantime = 1h
+findtime = 10m
+maxretry = 5
+bantime.increment = true
